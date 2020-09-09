@@ -80,3 +80,71 @@ void MainWindow::on_pushButtonTitle_clicked()
     this->setWindowTitle(title);
 }
 ```
+____
+Лабораторная 3 :white_check_mark:
+-----------
+
+**Задания для самостоятельной работы:**
+- [X] Создать надпись, которая содержит HTML-разметку с заголовком H2 «Имя Фамилия» заголовком H3 «Группа».
+- [x] Создать надпись, которая отображает значение индикатора прогресса.
+- [X] Создать два индикатора прогресса. Первый от 0 до 10, второй увеличивается после достижения первым значения 10 (максимум также 10).
+- :raising_hand: Добавил от себя кнопку автошага, ибо кликать слишком много :see_no_evil:
+
+![Лабораторная 3](img_labs/lab3.png)
+
+Файл mainwindow.cpp
+```c++
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+
+
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::MainWindow)
+{
+    ui->setupUi(this);
+    ui->lbName->setText("<h2>Босенко Роман</h2> <h3>Группа 4ИВТ</h3>");
+
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+
+
+void MainWindow::on_btStep_clicked()
+{
+    ui->pB_Second->setValue(ui->pB_Second->value() + 1);
+    if(ui->pB_Second->value() == 10)
+    {
+        ui->pb_First->setValue(ui->pb_First->value() + 1);
+        ui->pB_Second->setValue(0);
+    }
+    if(ui->pb_First->value() == 10)
+    {
+        ui->pb_First->setValue(0);
+        ui->lcdInc->display(ui->lcdInc->value() + 1);
+    }
+
+}
+
+void MainWindow::on_btResetSecond_clicked()
+{
+    ui->pB_Second->setValue(0);
+}
+
+void MainWindow::on_btResetFirst_clicked()
+{
+    ui->pb_First->setValue(0);
+}
+
+
+void MainWindow::on_bt_Auto_clicked()
+{
+    for (int i = 0;i < 100;i++ ) {
+        on_btStep_clicked();
+    }
+}
+
+```
