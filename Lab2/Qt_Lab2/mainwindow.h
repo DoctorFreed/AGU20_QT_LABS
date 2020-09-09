@@ -20,6 +20,10 @@ private slots:
 
     void on_pushButtonLess_clicked();
 
+    void on_pushButtonTitle_clicked();
+
+    void on_lineEdit_cursorPositionChanged(int arg1, int arg2);
+
 private:
     Ui::MainWindow *ui;
 };

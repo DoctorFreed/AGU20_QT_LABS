@@ -37,3 +37,10 @@ void MainWindow::on_pushButtonLess_clicked()
     }
 
 }
+
+void MainWindow::on_pushButtonTitle_clicked()
+{
+    QString title = ui->lineEdit->text();
+    this->setWindowTitle(title);
+}
+
