@@ -3,7 +3,7 @@
 [:arrow_forward: Лабораторная 1](#лабораторная-1-white_check_mark)
 [:arrow_forward: Лабораторная 2](#лабораторная-2-white_check_mark)
 [:arrow_forward: Лабораторная 3](#лабораторная-3-white_check_mark)
-[:arrow_forward: Лабораторная 4](#лабораторная-3-white_check_mark)
+[:arrow_forward: Лабораторная 4](#лабораторная-4-white_check_mark)
 ____
 
 Лабораторная 1 :white_check_mark: 
