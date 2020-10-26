@@ -22,7 +22,8 @@ MainWindow::MainWindow(QWidget *parent)
     MainWindow::showFullScreen();
     screenSize = MainWindow::size();
     MainWindow::showNormal();
-    //qsrand(QTime::currentTime().msecsSinceStartOfDay());
+    MainWindow::setWindowTitle("Босенко Роман - ИВТ");
+
 
 
 }
@@ -68,26 +69,23 @@ void MainWindow::on_tabWidget_currentChanged(int index)
 {
     if (index == 0)
     {
-        MainWindow::setWindowTitle("Задание 1");
         ui->centralwidget->setGeometry(0,0,558,294);
         MainWindow::setGeometry(screenSize.width()/2 - MainWindow::size().width()/2,screenSize.height()/2 - MainWindow::size().height()/2,558,294);
     }
     if (index == 1)
     {
-        MainWindow::setWindowTitle("Задание 2");
         ui->centralwidget->setGeometry(0,0,558,294);
         MainWindow::setGeometry(screenSize.width()/2 - MainWindow::size().width()/2,screenSize.height()/2 - MainWindow::size().height()/2,558,294);
     }
 
     if(index == 2)
     {
-        MainWindow::setWindowTitle("Задание 3");
+
         ui->centralwidget->setGeometry(0,0,355,196);
         MainWindow::setGeometry(screenSize.width()/2 - MainWindow::size().width()/2,screenSize.height()/2 - MainWindow::size().height()/2,355,196);
     }
     if(index == 3)
     {
-        MainWindow::setWindowTitle("Задание 4");
         ui->centralwidget->setGeometry(0,0,777,736);
         MainWindow::setGeometry(screenSize.width()/2 - MainWindow::size().width()/2,screenSize.height()/2 - MainWindow::size().height()/2,777,736);
     }
