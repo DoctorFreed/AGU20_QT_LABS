@@ -328,4 +328,190 @@ ____
 -----------
 **Задания для самостоятельной работы:**
 - [X] 1.	Создайте QList, содержащий ответы на какой-нибудь вопрос, помещенный в QLabel. При нажатии на кнопку ответ в дополнительном поле должно отобразиться правильный ли он.
-  
+  ![Лабораторная 5_1](img_labs/lab5_1.png)
+  Код задания
+```c++
+void MainWindow::on_bt_answer_clicked()
+{
+    if(ui->list_answer->currentItem()->text() == "Земля")
+    {
+        ui->lb_correct->setText("Верно!");
+    }
+    else
+    {
+        ui->lb_correct->setText("Не верно!");
+    }
+}
+```
+- [X] 2. Написать программу, которая создает таблицу 5*5, заполненную 0. Затем пользователь вписывает туда свои числа. При нажатии на кнопку «Сумма» найти сумму всех чисел в таблице.
+    ![Лабораторная 5_2](img_labs/lab5_2.png)
+ Код задания
+```c++
+void MainWindow::on_bt_sum_clicked()
+{
+    int sum = 0;
+    for (int i = 0; i < ui->table_sum->rowCount();i++ )
+    {
+        for (int j = 0; j < ui->table_sum->columnCount(); j++)
+        {
+           sum += ui->table_sum->item(i,j)->text().toInt();
+        }
+    }
+    ui->label_sum->setText("Сумма = " + QString::number(sum));
+
+}
+```
+- [X] 3. Создать программу с ComboBox, который содержит 3 элемента: «квадраты чисел», «кубы чисел» и «числа». При выборе нужного и нажатии на кнопку «создать», заполнить таблицу квадратами, кубами или самими числами от 1 до 9 (таблица 3*3).
+  ![Лабораторная 5_3](img_labs/lab5_3.png)
+   Код задания
+```c++
+void MainWindow::on_bt_num_clicked()
+{
+    if(ui->cb_num->currentIndex() == 0)
+    {
+        int k = 0;
+        for (int i = 0; i < ui->tb_num->rowCount();i++)
+        {
+            for (int j = 0; j < ui->tb_num->columnCount();j++)
+            {
+                k++;
+                QTableWidgetItem *itm = new QTableWidgetItem(QString::number(k*k));
+                ui->tb_num->setItem(i,j,itm);
+
+            }
+        }
+    }
+    if(ui->cb_num->currentIndex() == 1)
+    {
+        int k = 0;
+        for (int i = 0; i < ui->tb_num->rowCount();i++)
+        {
+            for (int j = 0; j < ui->tb_num->columnCount();j++)
+            {
+                k++;
+                QTableWidgetItem *itm = new QTableWidgetItem(QString::number(k*k*k));
+                ui->tb_num->setItem(i,j,itm);
+
+            }
+        }
+    }
+    if(ui->cb_num->currentIndex() == 2)
+    {
+        int k = 0;
+        for (int i = 0; i < ui->tb_num->rowCount();i++)
+        {
+            for (int j = 0; j < ui->tb_num->columnCount();j++)
+            {
+                k++;
+                QTableWidgetItem *itm = new QTableWidgetItem(QString::number(k));
+                ui->tb_num->setItem(i,j,itm);
+
+            }
+        }
+    }
+
+}
+```
+- [X] 4. Написать программу суммирования матриц, которые представлены в виде 2-х таблиц. Ответ в третьей.
+![Лабораторная 5_4](img_labs/lab5_4.png)
+Код кнопок
+```c++
+void MainWindow::on_bt_addrow_tb1_clicked()
+{
+    ui->tb_sum_one->insertRow(ui->tb_sum_one->rowCount());
+    on_bt_random_tb1_clicked();
+}
+
+void MainWindow::on_bt_addcol_tb1_clicked()
+{
+    ui->tb_sum_one->insertColumn(ui->tb_sum_one->columnCount());
+    on_bt_random_tb1_clicked();
+}
+
+void MainWindow::on_bt_delrow_tb1_clicked()
+{
+    ui->tb_sum_one->setRowCount(ui->tb_sum_one->rowCount() - 1);
+}
+
+void MainWindow::on_bt_delcol_tb1_clicked()
+{
+    ui->tb_sum_one->setColumnCount(ui->tb_sum_one->columnCount() - 1);
+}
+
+void MainWindow::on_bt_addrow_tb2_clicked()
+{
+    ui->tb_sum_two->insertRow(ui->tb_sum_two->rowCount());
+    on_bt_random_tb2_clicked();
+}
+
+void MainWindow::on_bt_addcol_tb2_clicked()
+{
+    ui->tb_sum_two->insertColumn(ui->tb_sum_two->columnCount());
+    on_bt_random_tb2_clicked();
+}
+
+void MainWindow::on_bt_delrow_tb2_clicked()
+{
+    ui->tb_sum_two->setRowCount(ui->tb_sum_two->rowCount() - 1);
+}
+
+void MainWindow::on_bt_delcol_tb1_2_clicked()
+{
+    ui->tb_sum_two->setColumnCount(ui->tb_sum_two->columnCount() - 1);
+}
+```
+Код рандомного заполнения матриц
+```c++
+void MainWindow::on_bt_random_tb1_clicked()
+{
+    for (int i = 0; i < ui->tb_sum_one->rowCount();i++)
+    {
+        for (int j = 0; j < ui->tb_sum_one->columnCount();j++)
+        {
+
+            QTableWidgetItem *itm = new QTableWidgetItem(QString::number(QRandomGenerator::global()->generate()%100+1));
+            ui->tb_sum_one->setItem(i,j,itm);
+
+        }
+    }
+}
+
+void MainWindow::on_bt_random_tb2_clicked()
+{
+    for (int i = 0; i < ui->tb_sum_two->rowCount();i++)
+    {
+        for (int j = 0; j < ui->tb_sum_two->columnCount();j++)
+        {
+
+            QTableWidgetItem *itm = new QTableWidgetItem(QString::number(QRandomGenerator::global()->generate()%100+1));
+            ui->tb_sum_two->setItem(i,j,itm);
+
+        }
+    }
+}
+```
+Код суммирования матриц
+
+```c++
+void MainWindow::on_bt_sum_matrix_clicked()
+{
+    if(ui->tb_sum_one->columnCount() != ui->tb_sum_two->columnCount() || ui->tb_sum_one->rowCount() != ui->tb_sum_two->rowCount() )
+    {
+        QMessageBox::warning(this, "Внимание", "Мартицы должны быть одноразмерными!");
+        return;
+    }
+    ui->tb_all->setColumnCount(ui->tb_sum_one->columnCount());
+    ui->tb_all->setRowCount(ui->tb_sum_one->rowCount());
+
+    for (int i = 0; i < ui->tb_all->rowCount();i++)
+    {
+        for (int j = 0; j < ui->tb_all->columnCount();j++)
+        {
+
+            QTableWidgetItem *itm = new QTableWidgetItem(QString::number(ui->tb_sum_one->item(i,j)->text().toInt() + ui->tb_sum_two->item(i,j)->text().toInt()));
+            ui->tb_all->setItem(i,j,itm);
+
+        }
+    }
+}
+```
