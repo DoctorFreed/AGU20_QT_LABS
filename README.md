@@ -525,3 +525,6 @@ void MainWindow::on_bt_sum_matrix_clicked()
     }
 }
 ```
+____
+Лабораторная 7-1 :white_check_mark:
+-----------
